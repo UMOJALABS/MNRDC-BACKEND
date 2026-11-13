@@ -1,0 +1,35 @@
+html.dark .tox-tinymce.mnr-dark-editor {
+    border-color: #475569 !important;
+}
+
+html.dark .mnr-dark-editor .tox-editor-header,
+html.dark .mnr-dark-editor .tox-toolbar,
+html.dark .mnr-dark-editor .tox-toolbar__primary,
+html.dark .mnr-dark-editor .tox-toolbar__overflow,
+html.dark .mnr-dark-editor .tox-menubar,
+html.dark .mnr-dark-editor .tox-statusbar {
+    background-color: #1e293b !important;
+    border-color: #475569 !important;
+}
+
+html.dark .mnr-dark-editor .tox .tox-tbtn,
+html.dark .mnr-dark-editor .tox .tox-mbtn,
+html.dark .mnr-dark-editor .tox .tox-statusbar__path-item,
+html.dark .mnr-dark-editor .tox .tox-statusbar__wordcount {
+    color: #e2e8f0 !important;
+}
+
+html.dark .mnr-dark-editor .tox .tox-tbtn svg,
+html.dark .mnr-dark-editor .tox .tox-mbtn svg {
+    fill: #e2e8f0 !important;
+}
+
+html.dark .mnr-dark-editor .tox .tox-tbtn:hover,
+html.dark .mnr-dark-editor .tox .tox-mbtn:hover {
+    background-color: #334155 !important;
+}
+
+html.dark .mnr-dark-editor iframe {
+    color-scheme: dark;
+}
+

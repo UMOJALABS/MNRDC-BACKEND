@@ -5,6 +5,7 @@ from django.urls import path
 from django.utils.html import format_html
 from django.utils.text import slugify
 from tinymce.widgets import TinyMCE
+from unfold.admin import ModelAdmin, TabularInline
 
 from .models import ContenuObjet, ObjetMusee
 from .qr_codes import build_qr_png
@@ -23,19 +24,27 @@ class ContenuObjetForm(forms.ModelForm):
                 "language": "fr_FR",
             })}
 
+    class Media:
+        css = {"all": ("musee/admin-tinymce.css",)}
+        js = ("musee/admin-tinymce.js",)
 
-class ContenuObjetInline(admin.StackedInline):
+
+class ContenuObjetInline(TabularInline):
     model = ContenuObjet
     form = ContenuObjetForm
-    extra = 1
+    extra = 0
+    show_change_link = True
     fields = ("langue", "titre", "resume", "description")
 
 
 @admin.register(ObjetMusee)
-class ObjetMuseeAdmin(admin.ModelAdmin):
+class ObjetMuseeAdmin(ModelAdmin):
     list_display = ("nom", "numero_inventaire", "qr_actif", "qr_apercu")
     list_filter = ("qr_actif",)
     search_fields = ("nom", "numero_inventaire", "contenus__titre", "contenus__resume")
+    ordering = ("nom",)
+    list_per_page = 25
+    date_hierarchy = "cree_le"
     inlines = (ContenuObjetInline,)
     readonly_fields = ("cree_le", "modifie_le", "qr_valeur", "qr_date_generation", "qr_preview")
     fields = (
@@ -86,11 +95,13 @@ class ObjetMuseeAdmin(admin.ModelAdmin):
 
 
 @admin.register(ContenuObjet)
-class ContenuObjetAdmin(admin.ModelAdmin):
+class ContenuObjetAdmin(ModelAdmin):
     form = ContenuObjetForm
     list_display = ("titre", "objet", "langue")
     list_filter = ("langue",)
     search_fields = ("titre", "resume", "description", "objet__numero_inventaire")
+    ordering = ("objet__nom", "langue")
+    list_per_page = 25
     fields = ("objet", "langue", "titre", "resume", "description")
 
 

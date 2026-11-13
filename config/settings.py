@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", "testserver"]
 # Application definition
 
 INSTALLED_APPS = [
+    'unfold',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -41,6 +42,34 @@ INSTALLED_APPS = [
     'tinymce',
     'musee.apps.MuseeConfig',
 ]
+
+UNFOLD = {
+    "SITE_TITLE": "MNRDC · Administration",
+    "SITE_HEADER": "Musée National de la RDC",
+    "SITE_SUBHEADER": "Gestion du catalogue",
+    "SITE_URL": None,
+    "SHOW_HISTORY": True,
+    "SHOW_VIEW_ON_SITE": False,
+    "COLORS": {
+        "primary": {
+            "50": "#f5f7f6",
+            "100": "#e8eeeb",
+            "200": "#d2ddd7",
+            "300": "#afc3b8",
+            "400": "#83a38f",
+            "500": "#5b876c",
+            "600": "#456d55",
+            "700": "#385744",
+            "800": "#304738",
+            "900": "#293b30",
+            "950": "#142019",
+        },
+    },
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
