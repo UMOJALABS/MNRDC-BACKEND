@@ -1,30 +1,30 @@
 {% load i18n %}
 
 {% if not theme %}
-    <div class="@container border-b border-base-200 grid grid-cols-2 gap-1 mb-1 pb-2 px-2 dark:border-base-700">
+    <div x-data="{ classicPalette: localStorage.getItem('mnrDarkPalette') === 'classic' }" class="@container border-b border-base-200 grid grid-cols-2 gap-1 mb-1 pb-2 px-2 dark:border-base-700">
         <a data-mnr-theme-option class="cursor-pointer flex min-w-0 flex-row items-center justify-center gap-1 px-1 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200 @max-[240px]:justify-center"
-           x-on:click="switchTheme('light')"
+           x-on:click="switchTheme('light'); classicPalette = false"
            x-bind:class="adminTheme == 'light' && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
             <span class="material-symbols-outlined">light_mode</span>
             <span class="leading-none self-center @max-[240px]:hidden">Clair</span>
         </a>
 
         <a data-mnr-theme-option class="cursor-pointer flex min-w-0 flex-row items-center justify-center gap-1 px-1 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200 @max-[240px]:justify-center"
-           x-on:click="switchTheme('dark')"
-           x-bind:class="adminTheme == 'dark' && localStorage.getItem('mnrDarkPalette') != 'classic' && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
+           x-on:click="switchTheme('dark'); classicPalette = false"
+           x-bind:class="adminTheme == 'dark' && !classicPalette && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
             <span class="material-symbols-outlined">dark_mode</span>
             <span class="leading-none self-center @max-[240px]:hidden">Sombre</span>
         </a>
 
         <a data-mnr-theme-option data-mnr-dark-classic class="cursor-pointer flex min-w-0 flex-row items-center justify-center gap-1 px-1 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200 @max-[240px]:justify-center"
-           x-on:click="switchTheme('dark')"
-           x-bind:class="adminTheme == 'dark' && localStorage.getItem('mnrDarkPalette') == 'classic' && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
+           x-on:click="switchTheme('dark'); classicPalette = true"
+           x-bind:class="adminTheme == 'dark' && classicPalette && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
             <span class="material-symbols-outlined">contrast</span>
             <span class="leading-none self-center @max-[240px]:hidden">Classique</span>
         </a>
 
         <a data-mnr-theme-option class="cursor-pointer flex min-w-0 flex-row items-center justify-center gap-1 px-1 py-1.5 rounded-default hover:bg-base-100 hover:text-base-700 dark:hover:bg-base-700 dark:hover:text-base-200 @max-[240px]:justify-center"
-           x-on:click="switchTheme('auto')"
+           x-on:click="switchTheme('auto'); classicPalette = false"
            x-bind:class="adminTheme == 'auto' && 'text-primary-600 dark:text-primary-500 dark:hover:text-primary-500! hover:text-primary-600!'">
             <span class="material-symbols-outlined">computer</span>
             <span class="leading-none self-center @max-[240px]:hidden">Système</span>
