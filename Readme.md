@@ -12,7 +12,7 @@ La description est éditée dans l'administration avec TinyMCE, un éditeur WYSI
 
 Voir [API.md](API.md) pour le détail des routes, paramètres, réponses et erreurs.
 
-Voir [deploiement.md](deploiement.md) pour le déploiement sur Render via le Blueprint `render.yaml`.
+Voir [deploiement.md](deploiement.md) pour le déploiement sur un VPS Linux avec Nginx, Gunicorn et SQLite.
 
 - `GET /api/objets/qr/{valeur}/?langue=fr` : retourne la fiche ; si la langue n'existe pas, le français est utilisé.
 - `GET /api/objets/qr/{valeur}/langues/` : retourne les langues disponibles pour cet objet.

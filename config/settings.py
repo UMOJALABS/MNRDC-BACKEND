@@ -28,8 +28,6 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-2q_z##7_4dsa(sk-n9v^g
 DEBUG = os.environ.get('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
-if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-    ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
 ALLOWED_HOSTS.extend(host.strip() for host in os.environ.get('ALLOWED_HOSTS', '').split(',') if host.strip())
 
 
@@ -185,11 +183,12 @@ STORAGES = {
 MEDIA_URL = '/media/'
 MEDIA_ROOT = Path(os.environ.get('MEDIA_ROOT', BASE_DIR / 'media'))
 
-CSRF_TRUSTED_ORIGINS = []
-if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
-    CSRF_TRUSTED_ORIGINS.append(f"https://{os.environ['RENDER_EXTERNAL_HOSTNAME']}")
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-CSRF_TRUSTED_ORIGINS += [origin.strip() for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',') if origin.strip()]
+CSRF_TRUSTED_ORIGINS = [
+    origin.strip()
+    for origin in os.environ.get('CSRF_TRUSTED_ORIGINS', '').split(',')
+    if origin.strip()
+]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # Logo affiché au centre des QR codes.
 MNRDC_QR_LOGO = BASE_DIR / "musee" / "static" / "musee" / "images" / "mnrdc-logo.png"
