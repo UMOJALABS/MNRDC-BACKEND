@@ -69,6 +69,12 @@ Retourne les langues utilisées par au moins un contenu, tous objets confondus. 
 
 La réponse utilise le même format que la liste des langues d'un objet.
 
+## QR Codes dans l'administration
+
+Les QR Codes PNG sont générés par le backend et utilisent la valeur `qr_valeur` de chaque objet. Dans l'administration, la liste des objets propose **Télécharger tous les QR codes**. Cette action télécharge une archive ZIP contenant un PNG par objet, y compris les objets dont le QR Code est désactivé. Ce téléchargement est réservé aux utilisateurs connectés à l'administration ; il ne fait pas partie des routes publiques JSON décrites ci-dessus.
+
+Le logo central est chargé depuis `musee/static/musee/images/mnrdc-logo.png`, selon le réglage `MNRDC_QR_LOGO` dans `config/settings.py`. Un fond blanc opaque derrière le logo préserve sa visibilité et le contraste des QR Codes.
+
 ## Ce que l'API ne renvoie pas
 
 L'API ne renvoie ni médias ni avatar. Elle fournit les textes et les informations de l'objet nécessaires au frontend. Le résumé est destiné à la synthèse vocale côté frontend.

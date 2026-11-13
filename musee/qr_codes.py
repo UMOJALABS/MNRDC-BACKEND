@@ -13,8 +13,21 @@ def _logo_musee(size):
     if logo_path:
         try:
             logo = Image.open(logo_path).convert("RGBA")
-            logo.thumbnail((size, size), Image.Resampling.LANCZOS)
-            return logo
+            # Keep a white, opaque quiet zone behind transparent logo pixels so
+            # the QR modules cannot show through and reduce the logo contrast.
+            padding = max(3, size // 10)
+            plate = Image.new("RGBA", (size, size), (255, 255, 255, 255))
+            draw = ImageDraw.Draw(plate)
+            draw.rounded_rectangle(
+                (0, 0, size - 1, size - 1),
+                radius=max(3, size // 8),
+                fill=(255, 255, 255, 255),
+                outline="#d1d5db",
+                width=max(1, size // 48),
+            )
+            logo.thumbnail((size - 2 * padding, size - 2 * padding), Image.Resampling.LANCZOS)
+            plate.alpha_composite(logo, ((size - logo.width) // 2, (size - logo.height) // 2))
+            return plate
         except (OSError, TypeError):
             pass
 

@@ -1,19 +1,9 @@
 html.dark .tox-tinymce.mnr-dark-editor {
+    --mnr-editor-surface: var(--color-base-800, #302f2b);
+    --mnr-editor-border: var(--color-base-700, #41413b);
+    --mnr-editor-hover: var(--color-base-700, #41413b);
+    --mnr-editor-foreground: var(--color-base-100, #eeede6);
     border-color: var(--mnr-editor-border) !important;
-}
-
-html.dark .tox-tinymce.mnr-dark-editor {
-    --mnr-editor-surface: #27272a;
-    --mnr-editor-border: #52525b;
-    --mnr-editor-hover: #3f3f46;
-    --mnr-editor-foreground: #e4e4e7;
-}
-
-html.dark[data-mnr-dark-palette="classic"] .tox-tinymce.mnr-dark-editor {
-    --mnr-editor-surface: #1e293b;
-    --mnr-editor-border: #475569;
-    --mnr-editor-hover: #334155;
-    --mnr-editor-foreground: #e2e8f0;
 }
 
 html.dark .mnr-dark-editor .tox-editor-header,

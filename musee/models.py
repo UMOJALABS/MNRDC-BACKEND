@@ -13,6 +13,7 @@ LANGUAGE_CHOICES = [
 
 class ObjetMusee(models.Model):
     nom = models.CharField(max_length=250)
+    image_principale = models.ImageField(upload_to="musee/objets/principales/", null=True, blank=True)
     numero_inventaire = models.PositiveBigIntegerField(
         unique=True,
         null=True,
@@ -40,6 +41,18 @@ class ObjetMusee(models.Model):
 
     def __str__(self):
         return self.nom
+
+
+class ImageObjet(models.Model):
+    objet = models.ForeignKey(ObjetMusee, on_delete=models.CASCADE, related_name="images_carousel")
+    image = models.ImageField(upload_to="musee/objets/carousel/")
+
+    class Meta:
+        verbose_name = "image du carousel"
+        verbose_name_plural = "images du carousel"
+
+    def __str__(self):
+        return f"Image — {self.objet}"
 
 
 class ContenuObjet(models.Model):

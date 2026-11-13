@@ -174,10 +174,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
-# Logo PNG/JPEG transparent à placer dans le projet et à référencer ici.
-# Sans logo configuré, l'admin génère un badge MNRDC de remplacement.
-MNRDC_QR_LOGO = None
+# Logo affiché au centre des QR codes.
+MNRDC_QR_LOGO = BASE_DIR / "musee" / "static" / "musee" / "images" / "mnrdc-logo.png"
 
 TINYMCE_DEFAULT_CONFIG = {
     "height": 560,

@@ -18,6 +18,12 @@ Voir [API.md](API.md) pour le détail des routes, paramètres, réponses et erre
 
 Un QR Code absent/inactif ou un contenu absent dans la langue demandée et en français renvoie `404`.
 
+## Administration et QR Codes
+
+Dans l'administration (`/admin/`), chaque objet possède un QR Code. Depuis la liste des objets, le bouton **Télécharger tous les QR codes** crée une archive ZIP contenant un fichier PNG par objet. Les noms des fichiers incluent le nom et l'identifiant de l'objet. Les QR Codes inactifs sont également inclus dans cette archive.
+
+Le logo affiché au centre des QR Codes est `musee/static/musee/images/mnrdc-logo.png`. Son chemin est défini par `MNRDC_QR_LOGO` dans `config/settings.py`. Le logo est posé sur un fond blanc opaque afin de rester visible si le PNG comporte de la transparence. Si l'image configurée est introuvable ou illisible, un badge MNRDC de remplacement est généré.
+
 ## Installation (PowerShell)
 
 ```powershell

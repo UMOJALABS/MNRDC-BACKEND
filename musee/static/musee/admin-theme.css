@@ -22,6 +22,96 @@ html:not(.dark) select {
     background-color: #fffefa;
 }
 
+input.mnr-multiple-image-input {
+    display: block;
+    width: 100%;
+    max-width: 38rem;
+    padding: .75rem;
+    border: 1px solid var(--color-base-300, #b7c8bd);
+    border-radius: .5rem;
+    background: var(--color-base-50, #fffefa);
+    color: var(--color-base-900, #24231f);
+    color-scheme: light;
+}
+
+input.mnr-multiple-image-input::file-selector-button {
+    appearance: none;
+    margin-right: .85rem;
+    padding: .65rem 1rem;
+    border: 0 !important;
+    border-radius: .4rem;
+    background-color: var(--color-primary-600, #456d55) !important;
+    color: #fff !important;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+input.mnr-multiple-image-input::file-selector-button:hover {
+    background-color: var(--color-primary-700, #385744) !important;
+}
+
+html.dark input.mnr-multiple-image-input {
+    border-color: var(--color-base-700, #41413b);
+    background: var(--color-base-900, #24231f);
+    color: var(--color-base-100, #eeede6);
+    color-scheme: dark;
+}
+
+html.dark input.mnr-multiple-image-input::file-selector-button {
+    background-color: var(--color-primary-600, #456d55) !important;
+}
+
+html.dark input.mnr-multiple-image-input::file-selector-button:hover {
+    background-color: var(--color-primary-700, #385744) !important;
+}
+
+html.dark[data-mnr-dark-palette="classic"] input.mnr-multiple-image-input::file-selector-button {
+    background-color: var(--color-base-700, #41413b) !important;
+}
+
+html.dark[data-mnr-dark-palette="classic"] input.mnr-multiple-image-input::file-selector-button:hover {
+    background-color: var(--color-base-600, #55544d) !important;
+}
+
+.mnr-selected-images {
+    display: grid;
+    gap: .5rem;
+    max-width: 38rem;
+    margin: .75rem 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.mnr-selected-images li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .5rem .75rem;
+    border: 1px solid var(--color-base-300, #c9c8bf);
+    border-radius: .4rem;
+    background: var(--color-base-50, #fffefa);
+    color: var(--color-base-900, #24231f);
+}
+
+.mnr-remove-image {
+    border: 0;
+    background: transparent;
+    color: var(--color-primary-700, #385744);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+html.dark .mnr-selected-images li {
+    border-color: var(--color-base-700, #41413b);
+    background: var(--color-base-900, #24231f);
+    color: var(--color-base-100, #eeede6);
+}
+
+html.dark .mnr-remove-image {
+    color: var(--color-primary-300, #afc3b8);
+}
+
 /* Restore Unfold's original neutral base palette when classic dark is selected. */
 html.dark[data-mnr-dark-palette="classic"] {
     --color-base-50: oklch(98.5% .002 247.839);
