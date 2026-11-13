@@ -19,7 +19,7 @@ def objet_par_qr(request, valeur):
         fallback = contenu is not None
     if contenu is None:
         return Response({"detail": "Aucun contenu disponible dans cette langue ni en français."}, status=404)
-    data = ContenuObjetPublicSerializer(contenu).data
+    data = ContenuObjetPublicSerializer(contenu, context={"request": request}).data
     data.update({"langue_demandee": langue_demandee, "fallback_langue": fallback, "description_format": "html"})
     return Response(data)
 

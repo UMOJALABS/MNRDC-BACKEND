@@ -1,6 +1,6 @@
 # MNRDC — Backend
 
-Backend Django du Musée National de la République Démocratique du Congo. Le visiteur scanne le QR Code d'un objet ; le frontend récupère le contenu correspondant à la langue choisie. Le backend ne fournit ni média ni avatar.
+Backend Django du Musée National de la République Démocratique du Congo. Le visiteur scanne le QR Code d'un objet ; le frontend récupère le contenu correspondant à la langue choisie, avec les URL des images de l'objet.
 
 ## Modèle métier
 
@@ -11,6 +11,8 @@ La description est éditée dans l'administration avec TinyMCE, un éditeur WYSI
 ## API
 
 Voir [API.md](API.md) pour le détail des routes, paramètres, réponses et erreurs.
+
+Voir [deploiement.md](deploiement.md) pour le déploiement sur Render via le Blueprint `render.yaml`.
 
 - `GET /api/objets/qr/{valeur}/?langue=fr` : retourne la fiche ; si la langue n'existe pas, le français est utilisé.
 - `GET /api/objets/qr/{valeur}/langues/` : retourne les langues disponibles pour cet objet.
