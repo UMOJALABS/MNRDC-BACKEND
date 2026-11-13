@@ -61,7 +61,14 @@ sudo chmod 750 /var/lib/mnrdc
 
 ## 2. Configurer les variables d'environnement
 
-Créez `/etc/mnrdc-backend.env` et définissez une vraie clé secrète, le domaine, le chemin SQLite et le dossier média :
+Copiez le modèle du dépôt vers `/etc/mnrdc-backend.env`, puis remplacez les valeurs locales par les valeurs du serveur :
+
+```bash
+sudo cp /opt/mnrdc-backend/.env.example /etc/mnrdc-backend.env
+sudo nano /etc/mnrdc-backend.env
+```
+
+Le fichier doit contenir au minimum :
 
 ```ini
 SECRET_KEY=remplacer-par-une-cle-aleatoire-longue

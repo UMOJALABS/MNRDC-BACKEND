@@ -32,9 +32,12 @@ Le logo affiché au centre des QR Codes est `musee/static/musee/images/mnrdc-log
 python -m venv .venv
 .\.venv\Scripts\Activate.ps1
 pip install -r requirements.txt
+Copy-Item .env.example .env
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
 ```
+
+Le fichier `.env` contient les réglages locaux et n'est pas versionné. Modifiez-le si nécessaire; `.env.example` sert de modèle pour le VPS.
 
 Administration : http://127.0.0.1:8000/admin/ . SQLite est utilisé en développement local.

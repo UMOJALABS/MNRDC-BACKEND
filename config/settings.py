@@ -13,9 +13,11 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 import os
 from django.templatetags.static import static
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+load_dotenv(BASE_DIR / '.env')
 
 
 # Quick-start development settings - unsuitable for production
@@ -136,7 +138,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {'default': {
     'ENGINE': 'django.db.backends.sqlite3',
-    'NAME': os.environ.get('SQLITE_PATH', BASE_DIR / 'db.sqlite3'),
+    'NAME': os.environ.get('SQLITE_PATH') or BASE_DIR / 'db.sqlite3',
 }}
 
 
@@ -181,7 +183,7 @@ STORAGES = {
     'staticfiles': {'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage'},
 }
 MEDIA_URL = '/media/'
-MEDIA_ROOT = Path(os.environ.get('MEDIA_ROOT', BASE_DIR / 'media'))
+MEDIA_ROOT = Path(os.environ.get('MEDIA_ROOT') or BASE_DIR / 'media')
 
 CSRF_TRUSTED_ORIGINS = [
     origin.strip()
