@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+from django.templatetags.static import static
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,7 +51,22 @@ UNFOLD = {
     "SITE_URL": None,
     "SHOW_HISTORY": True,
     "SHOW_VIEW_ON_SITE": False,
+    "STYLES": [lambda request: static("musee/admin-theme.css")],
+    "SCRIPTS": [lambda request: static("musee/admin-theme-options.js")],
     "COLORS": {
+        "base": {
+            "50": "#f6f5f0",
+            "100": "#eeede6",
+            "200": "#deddd5",
+            "300": "#c9c8bf",
+            "400": "#96958c",
+            "500": "#6c6b63",
+            "600": "#55544d",
+            "700": "#41413b",
+            "800": "#302f2b",
+            "900": "#24231f",
+            "950": "#171713",
+        },
         "primary": {
             "50": "#f5f7f6",
             "100": "#e8eeeb",
@@ -69,6 +85,9 @@ UNFOLD = {
         "show_search": True,
         "show_all_applications": True,
     },
+    "COMMAND": {
+        "search_models": ["musee.objetmusee"],
+    },
 }
 
 MIDDLEWARE = [
@@ -86,7 +105,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

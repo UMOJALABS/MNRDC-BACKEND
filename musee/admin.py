@@ -5,7 +5,7 @@ from django.urls import path
 from django.utils.html import format_html
 from django.utils.text import slugify
 from tinymce.widgets import TinyMCE
-from unfold.admin import ModelAdmin, TabularInline
+from unfold.admin import ModelAdmin, StackedInline
 
 from .models import ContenuObjet, ObjetMusee
 from .qr_codes import build_qr_png
@@ -29,9 +29,10 @@ class ContenuObjetForm(forms.ModelForm):
         js = ("musee/admin-tinymce.js",)
 
 
-class ContenuObjetInline(TabularInline):
+class ContenuObjetInline(StackedInline):
     model = ContenuObjet
     form = ContenuObjetForm
+    collapsible = True
     extra = 0
     show_change_link = True
     fields = ("langue", "titre", "resume", "description")
